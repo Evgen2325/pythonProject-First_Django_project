@@ -9,3 +9,7 @@ def index(request):
 def bills(request):
     bill = Bills.objects.all()
     return render(request, 'bill/bills.html', {'bill': bill})
+
+
+def create(request):
+    return render(request, 'bill/create.html')

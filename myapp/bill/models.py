@@ -7,8 +7,8 @@ class Bills(models.Model):
     date = models.DateTimeField('Дата')
 
     def __str__(self):
-        return self.title
+        return f' {self.title} {self.price}р. {self.date}'
 
     class Meta:
         verbose_name = 'Расчёт'
-        verbose_name_plural = 'Расчёт'
+        verbose_name_plural = 'Расчёты'

@@ -6,8 +6,11 @@
 {% block content %}
     <div class="features">
         <h1>Расчет</h1>
-
-        {{ bills }}
+        {% for el in bill %}
+            <div class="alert">
+                <h3>{{ el }}</h3>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
 </body>
