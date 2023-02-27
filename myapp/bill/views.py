@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Bills
+from .forms import BillsForm
 
 
 def index(request):
@@ -12,4 +13,20 @@ def bills(request):
 
 
 def create(request):
-    return render(request, 'bill/create.html')
+    error = ''
+    if request.method == 'POST':
+        form = BillsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            #return redirect('bill/bills') not work
+        else:
+            error = 'Некорректные данные'
+
+    form = BillsForm()
+
+    data = {
+        'form': form,
+        'error': error
+    }
+
+    return render(request, 'bill/create.html', data)
