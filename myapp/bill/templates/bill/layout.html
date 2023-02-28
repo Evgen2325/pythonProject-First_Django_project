@@ -14,18 +14,15 @@
     <aside>
         <img src="{% static 'bill/img/tree.png' %}" alt="Лого">
         <span class='logo'>S&t</span>
+        <ul>
+            <a href="{% url 'home' %}"><li><i class="fa-solid fa-tree"></i></i>Главная</li></a>
+            <a href="{% url 'about' %}"><li><i class="fa-solid fa-layer-group"></i>Расчет</li></a>
+            <a href="{% url 'create' %}"><li><i class="fa-solid fa-plus"></i>Добавить запись</li></a>
+        </ul>
         <main>
         {% block content %}
         {% endblock %}
         </main>
-        <ul>
-            <a href="{% url 'home' %}"><li><i class="fa-solid fa-tree"></i></i>Главная</li></a>
-            <a href="{% url 'about' %}"><li><i class="fa-solid fa-layer-group"></i>Расчет</li></a>
-            <a href=""><li><i class="fa-regular fa-calendar-days"></i>Итого за период</li></a>
-            <a href=""><li><i class="fa-solid fa-address-book"></i>Контакты</li></a>
-            <a href="{% url 'create' %}"><li><button class="btn"></button><i class="fa-solid fa-plus">
-            </i>Добавить запись</li></a>
-        </ul>
     </aside>
 </body>
 </html>

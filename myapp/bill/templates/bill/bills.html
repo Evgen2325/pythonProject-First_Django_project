@@ -7,8 +7,9 @@
     <div class="features">
         <h1>Расчет</h1>
         {% for el in bill %}
-            <div class="alert">
-                <h3>{{ el }}</h3>
+            <div>
+                <h3>{{ el }}<a href="{% url 'bill-details' el.id %}"><button class="btn btn-success">Детали
+                </button></a></h3>
             </div>
         {% endfor %}
     </div>
