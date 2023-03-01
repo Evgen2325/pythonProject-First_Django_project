@@ -6,6 +6,8 @@
 {% block content %}
     <div class="features">
         <h1>{{ all_bills }}</h1>
+        <a href="{% url 'bill-update' all_bills.id %}" class='btn btn-success'>Редактировать</a>
+        <a href="{% url 'bill-delete' all_bills.id %}" class='btn btn-danger'>Удалить</a>
     </div>
 {% endblock %}
 </body>

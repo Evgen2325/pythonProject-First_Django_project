@@ -21,8 +21,9 @@ class BillsUpdateView(UpdateView):
     form_class = BillsForm
 
 
-class BillsDeleteView(DetailView):
+class BillsDeleteView(DeleteView):
     model = Bills
+    success_url = '/'
     template_name = 'bill/bills-delete.html'
 
 

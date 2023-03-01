@@ -7,7 +7,7 @@ class Bills(models.Model):
     date = models.DateField('Дата')
 
     def __str__(self):
-        return f'{self.date:%Y-%m-%d}{self.price:->30}р.{self.title:->30}'
+        return f'{self.date:%Y-%m-%d}{self.price:->25}р.{self.title:->25}'
 
     def get_absolute_url(self):
         return f'/bills/{self.id}'
