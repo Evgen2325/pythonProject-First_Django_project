@@ -5,7 +5,24 @@
 <body>
 {% block content %}
     <div class="features">
-        <h1>{{ all_bills }}</h1>
+        <div>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr class="active">
+                            <th>Название</th>
+                            <th>Цена</th>
+                            <th>Дата</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ all_bills.title }}</td>
+                                <td>{{ all_bills.price }}</td>
+                                <td>{{ all_bills.date }}</td>
+                            </tr>
+                        </tbody>
+                </table>
+            </div>
         <a href="{% url 'bill-update' all_bills.id %}" class='btn btn-success'>Редактировать</a>
         <a href="{% url 'bill-delete' all_bills.id %}" class='btn btn-danger'>Удалить</a>
     </div>
