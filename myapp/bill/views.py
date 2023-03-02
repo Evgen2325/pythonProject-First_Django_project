@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Bills
 from .forms import BillsForm
 from django.views.generic import DetailView, UpdateView, DeleteView
+from datetime import datetime, timedelta
 
 
 def index(request):
@@ -28,7 +29,29 @@ class BillsDeleteView(DeleteView):
 
 
 def bills(request):
-    bill = Bills.objects.order_by('date')
+    bill = Bills.objects.all()
+    return render(request, 'bill/bills.html', {'bill': bill})
+
+
+'''it is function for get sum(prices)'''
+# def get_total_price(request):
+#     all_prices = ''
+#     total = Bills.objects.filter('price')
+#     for i in total:
+#         all_prices += i.price
+#         return render(request, 'bill/bills.html', {'all_total': all_prices})
+
+
+def bills_filter(request, pk):
+    bill = Bills.objects.all()
+    if pk == 1:
+        now = datetime.now() - timedelta(minutes=60*24*7)
+        bill = bill.filter(date__gte=now)
+    elif pk == 2:
+        now = datetime.now() - timedelta(minutes=60 * 24 * 30)
+        bill = bill.filter(date__gte=now)
+    elif pk == 3:
+        bill = bill
     return render(request, 'bill/bills.html', {'bill': bill})
 
 

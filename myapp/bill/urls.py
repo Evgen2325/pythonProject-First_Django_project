@@ -8,5 +8,7 @@ urlpatterns = [
     path('create', views.create, name='create'),
     path('bills/<int:pk>', views.BillsDetailView.as_view(), name='bill-details'),
     path('bills/<int:pk>/update', views.BillsUpdateView.as_view(), name='bill-update'),
-    path('bills/<int:pk>/delete', views.BillsDeleteView.as_view(), name='bill-delete')
+    path('bills/<int:pk>/delete', views.BillsDeleteView.as_view(), name='bill-delete'),
+    path('bills/filter<int:pk>', views.bills_filter, name='bills_filter'),
+    # path('bills', views.get_total_price, name='total-price'),
 ]
