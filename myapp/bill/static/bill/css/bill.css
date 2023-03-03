@@ -2,30 +2,24 @@ body {
     background: grey;
 }
 aside a {
-    float: right;
     background: grey;
     text-decoration: none;
-    width: 20%;
-    padding: 1%;
-    height: 10vh;
     color: gold;
-    border-top: 1px solid gold;
-}
-
-aside img{
-    width: 150px;
     float: left;
+    width: 200px;
 }
 
-aside .logo{
-    font-size: 15px;
+aside img {
+    width: 150px;
+    float: center;
+}
+
+aside .logo {
+    font-size: 20px;
     margin-left: -50px;
     font-weight: bold;
-}
-aside h3 {
-    margin-right: 30px;
-    margin-top: 120px;
-    font-size: 30px;
+    position: relative;
+    top: -50px;
 }
 
 aside ul {list-style: none}
@@ -33,21 +27,15 @@ aside ul li {
     color: gold;
     display: block;
     margin-top: 20px;
-    transition: transform .6s ease;
 }
 
 aside ul li:hover, aside ul a:hover {
     color: black;
-    transform: scale(1.05)
+    text-decoration: none;
 }
 
-main .features {
-    float: left;
-    color: black;
-    margin-left: 375px;
-    text-align: center;
-    width: 50%;
+form {
+    margin-left: 35%;
+    width: 500px;
+    margin-top: 50px;
 }
-
-main .features h1 {font-size: 50px;}
-main .features p {max-width: 400px; margin: 20px auto}

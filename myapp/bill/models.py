@@ -7,8 +7,11 @@ class Bills(models.Model):
     date = models.DateTimeField('Дата')
 
     def __str__(self):
-        return self.title
+        return f'{self.date:%Y-%m-%d} {self.price} {self.title}'
+
+    def get_absolute_url(self):
+        return f'/bills/{self.id}'
 
     class Meta:
         verbose_name = 'Расчёт'
-        verbose_name_plural = 'Расчёт'
+        verbose_name_plural = 'Расчёты'

@@ -5,9 +5,40 @@
 <body>
 {% block content %}
     <div class="features">
+        <div>
+            <a href="{% url 'bills_filter' pk=1 %}"><button class="btn btn-warning btn-xs">За последнюю неделю</button></a>
+            <a href="{% url 'bills_filter' pk=2 %}"><button class="btn btn-warning btn-xs">За последний месяц</button></a>
+            <a href="{% url 'bills_filter' pk=3 %}"><button class="btn btn-warning btn-xs">Все даты</button></a>
+        </div>
         <h1>Расчет</h1>
-
-        {{ bills }}
+        <div class="table-responsive">
+            <div>
+                <table class="table table-bordered table-sm">
+                    <thead>
+                        <tr class="active">
+                            <th>Название</th>
+                            <th>Цена</th>
+                            <th>Дата</th>
+                        </tr>
+                    </thead>
+                        {% for el in bill %}
+                        <tbody>
+                            <tr>
+                                <td>{{ el.title }} </td>
+                                <td>{{ el.price }}</td>
+                                <td>{{ el.date }}<a href="{% url 'bill-details' el.id %}">
+                                    <button class="btn btn-warning btn-xs">Редактировать</button></a></td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                </table>
+            </div>
+        </div>
     </div>
+<div class="container">
+    {% for el in all_total %}
+        <a href="{% url 'total-price' %}">Итого {{ el.price }}</a>
+    {% endfor %}
+</div>
 {% endblock %}
 </body>
