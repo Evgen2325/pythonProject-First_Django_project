@@ -10,5 +10,6 @@ urlpatterns = [
     path('bills/<int:pk>/update', views.BillsUpdateView.as_view(), name='bill-update'),
     path('bills/<int:pk>/delete', views.BillsDeleteView.as_view(), name='bill-delete'),
     path('bills/filter<int:pk>', views.bills_filter, name='bills_filter'),
-    # path('bills', views.get_total_price, name='total-price'),
+    path('bills/total', views.total_price, name='total-price'),
+    path('sound', views.sound, name='sound'),
 ]
