@@ -3,6 +3,17 @@ from .models import Bills
 from .forms import BillsForm
 from django.views.generic import DetailView, UpdateView, DeleteView
 from datetime import datetime, timedelta
+from gtts import gTTS
+from playsound import playsound
+
+
+def sound(request):
+    text_val = 'Добро пожаловать в приложение которое поможет вам контролировать ваши расходы'
+    language = 'ru'
+    obj = gTTS(text=text_val, lang=language, slow=False)
+    obj.save('test.mp3')
+    playsound('test.mp3')
+    return render(request, 'bill/index.html', {'playsound': playsound})
 
 
 def index(request):
@@ -33,19 +44,16 @@ def bills(request):
     return render(request, 'bill/bills.html', {'bill': bill})
 
 
-'''it is function for get sum(prices)'''
-# def get_total_price(request):
-#     all_prices = ''
-#     total = Bills.objects.filter('price')
-#     for i in total:
-#         all_prices += i.price
-#         return render(request, 'bill/bills.html', {'all_total': all_prices})
+def total_price(request):
+    items = Bills.objects.all()
+    total = sum(items.values_list('price', flat=True))
+    return render(request, 'bill/bills.html', {'total': total})
 
 
 def bills_filter(request, pk):
     bill = Bills.objects.all()
     if pk == 1:
-        now = datetime.now() - timedelta(minutes=60*24*7)
+        now = datetime.now() - timedelta(minutes=60 * 24 * 7)
         bill = bill.filter(date__gte=now)
     elif pk == 2:
         now = datetime.now() - timedelta(minutes=60 * 24 * 30)

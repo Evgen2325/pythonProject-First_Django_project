@@ -36,9 +36,7 @@
         </div>
     </div>
 <div class="container">
-    {% for el in all_total %}
-        <a href="{% url 'total-price' %}">Итого {{ el.price }}</a>
-    {% endfor %}
+        <a href="{% url 'total-price' %}"><li><i class="fa-solid fa-gears"></i>Итого {{ total }}</li></a>
 </div>
 {% endblock %}
 </body>
